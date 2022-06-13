@@ -20,3 +20,9 @@ for i = 1:length(yrs)
         GC = subgraph(G, idx);
     end
 end
+
+function IO = normalize(IO_S)
+    IO_S = IO_S - diag(diag(IO_S));
+    %Linear normalization of the weights w in [0,1]
+    IO = ((IO_S)/(max(max(IO_S)) - min(min(IO_S))));
+end
